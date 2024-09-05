@@ -131,6 +131,11 @@ func createOnewireDeviceList() error {
 		log.Fatalf("Can't read device directory %v", err)
 		return nil
 	}
+	// exit with error if no onewire interface has been found
+        if len(devices) == 0 {
+                log.Fatalf("No onewire devices could be found")
+                return nil
+        }
 	// searching for onewire attached devices
 	for _, device := range devices {
 		if strings.Contains(device.Name(), "w1_bus_master") != true {
