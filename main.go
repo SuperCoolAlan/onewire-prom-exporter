@@ -109,7 +109,7 @@ func observeOnewireTemperature() {
 			sensors[index] = sensor{SensorID: deviceID, SensorType: "temperature", SensorValue: value}
 			index++
 		}
-		time.Sleep(60 * time.Second)
+		time.Sleep(5 * time.Second)
 	}
 }
 
@@ -133,7 +133,7 @@ func createOnewireDeviceList() error {
 	}
 	// searching for onewire attached devices
 	for _, device := range devices {
-		if strings.Contains(device.Name(), "w1_bus_master1") != true {
+		if strings.Contains(device.Name(), "w1_bus_master") != true {
 			onewireDeviceList = append(onewireDeviceList, device.Name())
 			log.Infof("Device found: %s", device.Name())
 		}
