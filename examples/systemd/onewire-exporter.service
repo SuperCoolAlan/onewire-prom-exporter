@@ -2,9 +2,11 @@
 Description=Onewire Prometheus Exporter
 
 [Service]
-User=nobody
+User=alan
 EnvironmentFile=-/etc/sysconfig/onewire-exporter
-ExecStart=/usr/local/bin/onewire-prom-exporter $OPTIONS
+ExecStart=/home/alan/go/programs/onewire-prom-exporter/onewire-prom-exporter $OPTIONS
+Restart=on-failure
+RestartSec=30
 
 [Install]
 WantedBy=multi-user.target
