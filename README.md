@@ -7,6 +7,47 @@ sensors in Prometheus friendly format.
 
 Before building this exporter you need a working golang development environment. A good starting point is the 
 [Golang Getting Started](https://golang.org/doc/install) document.
+
+To install latest version on Raspberry Pi, follow [this forum post](https://forums.raspberrypi.com/viewtopic.php?t=317369#p1926129) or its transcript below.
+```
+su -
+password
+
+1) Download Golang - ARMv6 version at https://golang.org/dl/
+Example:
+root@raspberrypi:/home/pi/Downloads#
+go1.17.2.linux-armv6l.tar.gz
+
+2) Extract the archive you downloaded into /usr/local, creating a Go tree in /usr/local/go
+root@raspberrypi:/home/pi/Downloads#
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.2.linux-armv6l.tar.gz
+
+4) Create directory go at /home/pi
+/home/pi mkdir go
+
+5) Create directories at /home/pi/go
+mkdir bin
+mkdir pkg
+mkdir src
+mkdir programs (insert your programs here)
+
+3) Add to the PATH environment variable
+nano ~/.profile
+Insert this:
+PATH=$PATH:/usr/local/go/bin
+GOPATH=/home/pi/go
+Reference nano: https://phoenixnap.com/kb/use-nano-text ... ands-linux
+
+4) Make the system aware of the new profile
+source ~/.profile
+
+5) Verify that you've installed Go by opening a command prompt and typing the following command
+root@raspberrypi:~# go env
+Check this:
+GOPATH="/home/pi/go"
+GOROOT="/usr/local/go"
+GOVERSION="go1.17.2"
+```
 ## Building and Installation
 
 The current build.sh script will build the binary for ARM 5 architecture (good for Raspberry Pi)
